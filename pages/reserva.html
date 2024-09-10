@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva tu Aventura</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://franks-travelbox.com/wp-content/uploads/2017/11/brasilien-rio-de-janeiro-der-tijuca-nationalpark-weitet-sich-auf-den-hucc88geln-rund-um-rio-de-janeiro-zum-grocc88ssten-innerstacc88dtischen-regenwald-der-welt-aus-brasilien-vitoriano-jun-1200x800.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    .container {
+      margin-top: 5rem;
+    }
+
+    h2 {
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      color: #333;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="form-container">
+      <h2>Reserva tu Próxima Aventura</h2>
+
+      <!-- Formulario de Reserva -->
+      <form action="paquetes.html" method="GET"> <!-- Redirigir a paquetes.html -->
+        <!-- Selección de Fecha -->
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Selecciona la Fecha</label>
+          <input type="date" id="fecha" class="form-control" required>
+        </div>
+
+        <!-- Selección de Hora -->
+        <div class="mb-3">
+          <label for="hora" class="form-label">Selecciona la Hora de Check-in</label>
+          <select id="hora" class="form-select" required>
+            <option value="" disabled selected>Elige una hora</option>
+            <option value="08:00">08:00 AM</option>
+            <option value="09:00">09:00 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="12:00">12:00 PM</option>
+            <option value="13:00">01:00 PM</option>
+            <option value="14:00">02:00 PM</option>
+            <option value="15:00">03:00 PM</option>
+          </select>
+        </div>
+
+        <!-- Botón de Enviar -->
+        <button type="submit" class="btn btn-primary btn-submit">Confirmar Reserva</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
