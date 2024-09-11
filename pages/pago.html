@@ -1,104 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pago de Reserva</title>
+  <title>Confirmación de Pago</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: url('https://th.bing.com/th/id/R.22b58d85535234cc954e25a0fd5275a5?rik=3Xs98AvdoG3z0w&riu=http%3a%2f%2fd17oknutsq9rw.cloudfront.net%2fwp-content%2fuploads%2f2016%2f07%2f13043330%2fLeme-Beach-800x533.jpg&ehk=47drepVr6xnDz%2fGNa4HFCPRe9A8SdGjcMAld%2flDlWr0%3d&risl=&pid=ImgRaw&r=0') no-repeat center center fixed;
+      background: url('https://franks-travelbox.com/wp-content/uploads/2017/11/brasilien-rio-de-janeiro-der-tijuca-nationalpark-weitet-sich-auf-den-hucc88geln-rund-um-rio-de-janeiro-zum-grocc88ssten-innerstacc88dtischen-regenwald-der-welt-aus-brasilien-vitoriano-jun-1200x800.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #fff;
+      color: white;
     }
 
     .container {
       margin-top: 5rem;
-      background-color: rgba(156, 156, 152, 0.6); /* Fondo oscuro semi-transparente para contraste */
-      padding: 2rem;
-      border-radius: 8px;
     }
 
     h2 {
-      text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
       font-size: 2.5rem;
+      text-align: center;
     }
 
-    .form-container {
+    .summary-container {
+      background-color: rgba(255, 255, 255, 0.8);
       padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
-      background-color: rgba(66, 66, 66, 0.8);
+      color: #333;
     }
 
-    .btn-submit {
+    .btn-confirm {
       display: block;
       width: 100%;
       margin-top: 2rem;
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
-    <div class="form-container">
-      <h2>Completa tu Pago</h2>
+    <div class="summary-container">
+      <h2>Resumen de la Reserva</h2>
 
-      <!-- Resumen de la Reserva -->
       <div class="mb-3">
-        <h4>Resumen de Reserva:</h4>
-        <p><strong>Fecha Seleccionada:</strong> <span id="fecha-seleccionada"></span></p>
-        <p><strong>Paquete Elegido:</strong> <span id="paquete-elegido"></span></p>
+        <h4>Fecha Seleccionada:</h4>
+        <p id="fecha-seleccionada"></p>
       </div>
 
-      <!-- Formulario de Pago -->
+      <div class="mb-3">
+        <h4>Paquete Elegido:</h4>
+        <p id="paquete-seleccionado"></p>
+        <h5>Precio:</h5>
+        <p id="precio-paquete"></p>
+      </div>
+
       <form id="payment-form">
         <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre en la Tarjeta</label>
-          <input type="text" id="nombre" class="form-control" placeholder="Nombre Completo" required>
+          <label for="nombre" class="form-label">Nombre Completo</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required>
         </div>
-        
         <div class="mb-3">
-          <label for="numero-tarjeta" class="form-label">Número de Tarjeta</label>
-          <input type="text" id="numero-tarjeta" class="form-control" placeholder="1234 5678 9012 3456" required>
+          <label for="telefono" class="form-label">Número de Teléfono (con código de país)</label>
+          <input type="tel" class="form-control" id="telefono" placeholder="Ejemplo: +54-15-0904-7766" required>
         </div>
-
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="expiracion" class="form-label">Fecha de Expiración</label>
-            <input type="text" id="expiracion" class="form-control" placeholder="MM/AA" required>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="cvv" class="form-label">CVV</label>
-            <input type="text" id="cvv" class="form-control" placeholder="123" required>
-          </div>
-        </div>
-
-        <!-- Botón de Enviar -->
-        <button type="submit" class="btn btn-primary btn-submit">Confirmar Pago</button>
+        <button type="submit" class="btn btn-primary btn-confirm">Confirmar y Enviar por WhatsApp</button>
       </form>
     </div>
   </div>
 
   <script>
-    // Obtener la fecha y el paquete del almacenamiento local
     const fechaSeleccionada = localStorage.getItem('fechaSeleccionada');
-    const paqueteElegido = localStorage.getItem('paqueteElegido');
+    const paqueteSeleccionado = localStorage.getItem('paqueteSeleccionado');
+    const precioSeleccionado = localStorage.getItem('precioSeleccionado');
 
-    // Mostrar la fecha y el paquete en el resumen
-    document.getElementById('fecha-seleccionada').textContent = fechaSeleccionada;
-    document.getElementById('paquete-elegido').textContent = paqueteElegido;
+    document.getElementById('fecha-seleccionada').innerText = fechaSeleccionada ? fechaSeleccionada : 'No se ha seleccionado una fecha.';
+    document.getElementById('paquete-seleccionado').innerText = paqueteSeleccionado ? paqueteSeleccionado : 'No se ha seleccionado un paquete.';
+    document.getElementById('precio-paquete').innerText = precioSeleccionado ? `$${precioSeleccionado}` : 'Precio no disponible.';
+    document.getElementById('payment-form').addEventListener('submit', function (event) {
+      event.preventDefault();
 
-    // Manejar el formulario de pago
-    document.getElementById('payment-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Pago confirmado. ¡Gracias por tu reserva!');
-      // Aquí podrías redirigir a una página de confirmación o realizar alguna otra acción.
+      const nombre = document.getElementById('nombre').value;
+      const telefono = document.getElementById('telefono').value;
+
+      if (!nombre || !telefono) {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+
+
+      const mensaje = `Hola, soy ${nombre}. Quiero confirmar mi reserva para la fecha ${fechaSeleccionada}, con el paquete ${paqueteSeleccionado} (${precioSeleccionado}).`;
+      const numeroWhatsApp = '5491124690480';
+      const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+      window.open(urlWhatsApp, '_blank');
     });
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

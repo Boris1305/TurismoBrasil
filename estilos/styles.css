@@ -1,0 +1,113 @@
+body {
+  font-family: 'Arial', sans-serif;
+
+}
+
+h1,
+h2 {
+  font-weight: bold;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+#inicio {
+  background: url('https://www.dicasdeviagem.com/wp-content/uploads/2022/04/gugelmim-rio-de-janeiro-por-do-sol-pixabay.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#sobre-nosotros {
+  background: url(https://th.bing.com/th/id/OIP.TuGVKygD9xpW5Z9rHQYVGQHaE9?rs=1&pid=ImgDetMain);
+  background-color: white;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 10px;
+}
+
+footer {
+  background-color: #82ee61;
+}
+
+.nav {
+  background-color: #4c34d1;
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+  color: white;
+  border: none;
+}
+
+.btn-facebook:hover {
+  background-color: #2d4373;
+}
+
+.btn-instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  border: none;
+}
+
+.btn-instagram:hover {
+  background: linear-gradient(45deg, #d95d39, #b32e47, #9f1d55, #8b135e);
+}
+
+.btn-tiktok {
+  background-color: #010101;
+  color: white;
+  border: none;
+}
+
+.btn-tiktok:hover {
+  background-color: #bdbdbd;
+}
+
+.social-icons i {
+  margin-right: 8px;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  color: #000000;
+  font-weight: bold;
+}
+
+.navbar .navbar-nav {
+  margin-top: 1rem;
+}
+
+.navbar-nav .nav-link {
+  color: rgb(0, 0, 0) !important;
+  font-size: 1.1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #363632 !important;
+}
+
+.navbar {
+  background-color: #f7e7b3;
+  padding: 2rem 0;
+}
+
+#carrusel {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-inner img {
+  object-fit: cover;
+  height: 600px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 1rem;
+}
